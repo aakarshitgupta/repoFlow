@@ -8,6 +8,7 @@ const { pushRepo } = require("./controllers/push");
 const { revertRepo } = require("./controllers/revert");
 
 yargs(hideBin(process.argv))
+  .command("start", "starts the server", {}, startServer)
   .command("init", "Initialise a new repo", {}, initRepo)
   .command("add <file>", "Add a file to the staging area", (yargs)=>{yargs.positional("file",{
     describe: "File that'll be added to staging area",
@@ -31,3 +32,7 @@ yargs(hideBin(process.argv))
   } )
   .demandCommand(1, "you need atleast one command")
   .help().argv;
+
+  function startServer(){
+    console.log("server is started");
+  }
