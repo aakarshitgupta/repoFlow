@@ -1,3 +1,10 @@
+const express = require("express");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const http = require("http");
+
 const yargs = require("yargs");
 const { hideBin } = require("yargs/helpers");
 const { initRepo } = require("./controllers/init");
@@ -6,6 +13,8 @@ const { commitRepo } = require("./controllers/commit");
 const { pullRepo } = require("./controllers/pull");
 const { pushRepo } = require("./controllers/push");
 const { revertRepo } = require("./controllers/revert");
+
+dotenv.config();
 
 yargs(hideBin(process.argv))
   .command("start", "starts the server", {}, startServer)
