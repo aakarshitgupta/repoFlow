@@ -26,6 +26,8 @@ yargs(hideBin(process.argv))
   .command("revert <commitID>", "Revert to a commit by id", (yargs)=>{yargs.positional("commitID",{
     describe: "Revert changes to a specific commit",
     type:"string"
-  })}, revertRepo)
+  })},(argv)=>{
+    revertRepo(argv.commitID);
+  } )
   .demandCommand(1, "you need atleast one command")
   .help().argv;
